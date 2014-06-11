@@ -11,8 +11,7 @@ public class PanMain extends JPanel // panel definition
     PanOut panOut = new PanOut();
     PanDisp panDisp = new PanDisp(panOut);
     PanDispChange panLabelChange = new PanDispChange(panDisp);
-    PanColour panColour = new PanColour(panDisp);
-    private PanOut PanOut;
+   // private PanOut PanOut;
 
     public PanMain() {
         // this next line tells PanMain that it has a border layout.
@@ -20,7 +19,7 @@ public class PanMain extends JPanel // panel definition
         add(panLabelChange, BorderLayout.SOUTH);
         add(panDisp, BorderLayout.CENTER);
         add(panOut, BorderLayout.EAST);
-        add(panColour, BorderLayout.WEST);
+        //add(panColour, BorderLayout.WEST);
 
     }
 }

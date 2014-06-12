@@ -6,7 +6,7 @@ import javax.swing.*;
 public class PanOut extends JPanel // panel definition
 {
 
-    String sScore, sHscore;
+    String sScore, sHscore,sSpeed;
     private final JLabel lblScore;
 
     public PanOut() {
@@ -14,9 +14,10 @@ public class PanOut extends JPanel // panel definition
         add(lblScore);
     }
 
-    void UpdateLabel(String _sScore, String _sHscore) {
+    void UpdateLabel(String _sScore, String _sHscore,String _sSpeed) {
         sScore = _sScore;
         sHscore = _sHscore;
-        lblScore.setText("<html>" + sScore + "<br />" + sHscore + "</html>");
+        sSpeed = _sSpeed;
+        lblScore.setText("<html>" + sScore + "<br />" + sHscore + "<br />"+sSpeed+"</html>");
     }
 }

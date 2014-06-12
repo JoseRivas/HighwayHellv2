@@ -15,7 +15,7 @@ public class PanDisp extends JPanel // panel definition
 
     PanOut panOut;
     private int nScore, nHighScore;
-    int Road1xPos, Road2xPos, xPos, xPos2, xPos3, yPos, yPos2, yPos3, nCrash,nSpeed;
+    int Road1xPos, Road2xPos, xPos, xPos2, xPos3, yPos, yPos2, yPos3, nCrash, nSpeed;
     Timer timer;
     Image road, Explosion;
     private Obstacle obs1, obs2, obs3;
@@ -51,9 +51,8 @@ public class PanDisp extends JPanel // panel definition
         Road2xPos = 800;
         nCrash = 0;
         nScore = 0;
-        nSpeed = -2;
+        nSpeed = -1;
     }
-
     ActionListener drive = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent evt) {
@@ -85,17 +84,20 @@ public class PanDisp extends JPanel // panel definition
                 car.x = 0;
                 car.y = 350;
             }
-            Road1xPos+=nSpeed;
-            Road2xPos+=nSpeed;
-            xPos+=nSpeed;
-            xPos2+=nSpeed;
-            xPos3 +=nSpeed;
+            Road1xPos += nSpeed;
+            Road2xPos += nSpeed;
+            xPos += nSpeed;
+            xPos2 += nSpeed;
+            xPos3 += nSpeed;
             nScore++;
             repaint();
             if (nScore > nHighScore) {
                 nHighScore = nScore;
             }
-            panOut.UpdateLabel("Score:" + nScore, "Highscore:" + nHighScore);
+            if (nScore % 10000 == 0 && nSpeed < 8) {
+                nSpeed -= 1;
+            }
+            panOut.UpdateLabel("Score:" + nScore, "Highscore:" + nHighScore,"Speed:"+Math.abs(nSpeed));
 
         }
     };
@@ -132,20 +134,22 @@ public class PanDisp extends JPanel // panel definition
             Thread.currentThread().interrupt();
         }
     }
-    void CheckBounds(){
-        if(car.x<=0&&car.dx==-1){
-            car.dx=0;
+
+    void CheckBounds() {
+        if (car.x <= 0 && car.dx == -1) {
+            car.dx = 0;
         }
-        if(car.y<=0&&car.dy==-1){
-            car.dy=0;
+        if (car.y <= 0 && car.dy == -1) {
+            car.dy = 0;
         }
-        if(car.x>=getWidth()-120&&car.dx==1){
-            car.dx=0;
+        if (car.x >= getWidth() - 120 && car.dx == 1) {
+            car.dx = 0;
         }
-        if(car.y>=getHeight()-60&&car.dy==1){
-            car.dy=0;
+        if (car.y >= getHeight() - 60 && car.dy == 1) {
+            car.dy = 0;
         }
     }
+
     public Image getImage(String path) {
         Image tempImage = null;
         try {

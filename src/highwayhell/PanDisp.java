@@ -15,7 +15,7 @@ public class PanDisp extends JPanel // panel definition
 
     PanOut panOut;
     private int nScore, nHighScore;
-    int Road1xPos, Road2xPos, xPos, xPos2, xPos3, yPos, yPos2, yPos3, nCrash, direction;
+    int Road1xPos, Road2xPos, xPos, xPos2, xPos3, yPos, yPos2, yPos3, nCrash,nSpeed;
     Timer timer;
     Image road, Explosion;
     private Obstacle obs1, obs2, obs3;
@@ -49,9 +49,9 @@ public class PanDisp extends JPanel // panel definition
         yPos3 = (int) (Math.random() * 700) + 1;
         Road1xPos = 0;
         Road2xPos = 800;
-        direction = -2;
         nCrash = 0;
         nScore = 0;
+        nSpeed = -2;
     }
 
     ActionListener drive = new ActionListener() {
@@ -85,12 +85,12 @@ public class PanDisp extends JPanel // panel definition
                 car.x = 0;
                 car.y = 350;
             }
-            Road1xPos += direction;
-            Road2xPos += direction;
-            xPos += direction;
-            xPos2 += direction;
-            xPos3 += direction;
-            nScore -= direction;
+            Road1xPos+=nSpeed;
+            Road2xPos+=nSpeed;
+            xPos+=nSpeed;
+            xPos2+=nSpeed;
+            xPos3 +=nSpeed;
+            nScore++;
             repaint();
             if (nScore > nHighScore) {
                 nHighScore = nScore;

@@ -94,8 +94,8 @@ public class PanDisp extends JPanel // panel definition
             if (nScore > nHighScore) {
                 nHighScore = nScore;
             }
-            if (nScore % 10000 == 0 && nSpeed < 8) {
-                nSpeed -= 1;
+            if (nScore % 2000 == 0 && nSpeed < 8) {
+                nSpeed -= 1;//every 2000 score increase speed by 1, maximum is 8
             }
             panOut.UpdateLabel("Score:" + nScore, "Highscore:" + nHighScore,"Speed:"+Math.abs(nSpeed));
 
